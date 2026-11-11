@@ -13,7 +13,7 @@ public class BudgetService {
         expenses.add(e);
     }
 
-    //helper method to get total of various conditions with one implemtation
+    //helper method to get total of various conditions with one implementation
     private long sumWhere(Predicate<Expense> condition) {
         long total = 0;
         for (Expense e : expenses) {
