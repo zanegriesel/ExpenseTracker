@@ -9,14 +9,14 @@ public class Expense {
     private final LocalDate date;
     private final String description;
 
-    public Expense(long amountInCents, Category category, LocalDate date, String subscription) {
+    public Expense(long amountInCents, Category category, LocalDate date, String description) {
         if (amountInCents <= 0) {
             throw new IllegalArgumentException("Invalid amount.");
         }
         this.amountInCents = amountInCents;
         this.category = category;
         this.date = date;
-        this.description = subscription;
+        this.description = description;
     }
 
     public long getAmountInCents() {
@@ -31,7 +31,7 @@ public class Expense {
         return date;
     }
 
-    public String getSubscription() {
+    public String getDescription() {
         return description;
     }
 
