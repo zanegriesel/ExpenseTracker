@@ -3,6 +3,7 @@ package budget.core;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.YearMonth;
+import java.util.function.Predicate;
 
 public class BudgetService {
 
@@ -12,32 +13,28 @@ public class BudgetService {
         expenses.add(e);
     }
 
-    public long getTotal() {
+    //helper method to get total of various conditions with one implemtation
+    private long sumWhere(Predicate<Expense> condition) {
         long total = 0;
         for (Expense e : expenses) {
-            total += e.getAmountInCents();
+            if (condition.test(e)) {
+                total += e.getAmountInCents();
+            }
         }
         return total;
+    }
+
+    //methods that get various totals and use the helper method.
+    public long getTotal() {
+        return sumWhere(e -> true);
     }
 
     public long getTotalForCategory(Category c) {
-        long total = 0;
-        for (Expense e : expenses) {
-            if (e.getCategory() == c) {
-                total += e.getAmountInCents();
-            }
-        }
-        return total;
+        return sumWhere(e -> e.getCategory().equals(c));
     }
 
     public long getTotalForMonth(YearMonth month) {
-        long total = 0;
-        for (Expense e : expenses) {
-            if (YearMonth.from(e.getDate()).equals(month)) {
-                total += e.getAmountInCents();
-            }
-        }
-        return total;
+        return sumWhere(e -> YearMonth.from(e.getDate()).equals(month));
     }
 
 }
