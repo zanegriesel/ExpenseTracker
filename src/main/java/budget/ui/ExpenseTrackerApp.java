@@ -1,19 +1,19 @@
 package budget.ui;
 
-import budget.core.BudgetService;
-import budget.core.Money;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ExpenseTrackerApp extends Application {
     @Override
-    public void start(Stage stage) {
-        BudgetService service = new BudgetService();
-        Label label = new Label("Total: " + Money.format(service.getTotal()));
-        StackPane root = new StackPane(label);
+    public void start(Stage stage) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("main-view.fxml"));
+        Parent root = loader.load();
         Scene scene = new Scene(root, 400, 300);
 
         stage.setTitle("ExpenseTracker");
