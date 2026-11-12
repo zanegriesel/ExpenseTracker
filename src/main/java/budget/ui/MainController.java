@@ -6,6 +6,7 @@ import budget.core.Expense;
 import budget.core.Money;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 import java.time.LocalDate;
 
@@ -17,6 +18,9 @@ public class MainController {
     private Label totalLabel;
 
     @FXML
+    private TextField descriptionField;
+
+    @FXML
     private void initialize() {
         updateTotalLabel();
     }
@@ -24,7 +28,8 @@ public class MainController {
     @FXML
     private void handleAddSample() {
         long amountInCents = 5000;
-        Expense expense = new Expense(amountInCents, Category.FOOD, LocalDate.now(), "Sample");
+        String description = descriptionField.getText();
+        Expense expense = new Expense(amountInCents, Category.FOOD, LocalDate.now(), description);
         service.addExpense(expense);
         updateTotalLabel();
     }

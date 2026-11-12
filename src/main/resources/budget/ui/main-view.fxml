@@ -3,6 +3,7 @@
 
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="budget.ui.MainController"
@@ -10,6 +11,7 @@
       spacing="10">
 
     <Label fx:id="totalLabel"/>
+    <TextField fx:id="descriptionField" promptText="Expense Description"/>
     <Button text="Add sample expense" onAction="#handleAddSample"/>
 
 
