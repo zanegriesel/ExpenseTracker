@@ -10,10 +10,10 @@ class MoneyTest {
 
     @Test
     void moneyFormattedCorrectly() {
-        assertEquals("R8,43", Money.format(843));
-        assertEquals("R857,39", Money.format(85739));
-        assertEquals("R10,00", Money.format(1000));
-        assertEquals("R0,01", Money.format(1));
+        assertEquals("R8.43", Money.format(843));
+        assertEquals("R857.39", Money.format(85739));
+        assertEquals("R10.00", Money.format(1000));
+        assertEquals("R0.01", Money.format(1));
     }
 
     @Test

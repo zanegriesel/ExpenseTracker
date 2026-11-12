@@ -6,6 +6,6 @@ public class Money {
         long rands = cents / 100;
         long remainingCents = cents % 100;
 
-        return String.format("R%d,%02d", rands, remainingCents);
+        return String.format("R%d.%02d", rands, remainingCents);
     }
 }
