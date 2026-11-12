@@ -1,4 +1,5 @@
 budget\core\Expense.class
 budget\core\Money.class
+budget\ui\ExpenseTrackerApp.class
 budget\core\BudgetService.class
 budget\core\Category.class
