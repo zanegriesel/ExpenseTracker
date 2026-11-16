@@ -12,6 +12,7 @@
 
     <Label fx:id="totalLabel"/>
     <TextField fx:id="amountField" promptText="R--.--"/>
+    <Label fx:id="amountErrorLabel" visible="false"/>
     <TextField fx:id="descriptionField" promptText="Expense Description"/>
     <Button text="Add sample expense" onAction="#handleAddSample"/>
 

@@ -18,6 +18,9 @@ public class MainController {
     private Label totalLabel;
 
     @FXML
+    private Label amountErrorLabel;
+
+    @FXML
     private TextField descriptionField;
 
     @FXML
@@ -30,12 +33,25 @@ public class MainController {
 
     @FXML
     private void handleAddSample() {
-        //long amountInCents = 5000;
-        String amountText = amountField.getText();
-        String description = descriptionField.getText();
-        Expense expense = new Expense(Money.parse(amountText), Category.FOOD, LocalDate.now(), description);
-        service.addExpense(expense);
-        updateTotalLabel();
+        try {
+            amountErrorLabel.setVisible(false);
+            String amountText = amountField.getText();
+            String description = descriptionField.getText();
+            Expense expense = new Expense(Money.parse(amountText), Category.FOOD, LocalDate.now(), description);
+            service.addExpense(expense);
+            updateTotalLabel();
+        } catch (NumberFormatException e) {
+            showAmountError("Only numbers");
+        } catch (IllegalArgumentException e) {
+            showAmountError("Positive numbers only");
+        }
+    }
+
+    private void showAmountError(String message) {
+        amountErrorLabel.setVisible(true);
+        amountErrorLabel.setText(message);
+        amountField.requestFocus();
+        amountField.selectAll();
     }
 
     private void updateTotalLabel() {
