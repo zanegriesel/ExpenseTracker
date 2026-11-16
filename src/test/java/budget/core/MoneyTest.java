@@ -24,6 +24,16 @@ class MoneyTest {
     @Test
     void zeroAmountIsRejected() {
         assertThrows(IllegalArgumentException.class, () -> new Expense(0, Category.RENT, LocalDate.of(2026, 10, 10), "zero amount"));
+    }
+
+    @Test
+    void parseWholeRands(){
+        assertEquals(5000, Money.parse("50"));
+        assertEquals(5000, Money.parse("50.00"));
+        assertEquals(5050,Money.parse("50.5"));
+        assertEquals(29, Money.parse("0.29"));
+        assertThrows(IllegalArgumentException.class, () -> Money.parse("abc"));
+
 
     }
 }

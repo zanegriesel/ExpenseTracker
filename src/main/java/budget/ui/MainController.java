@@ -21,15 +21,19 @@ public class MainController {
     private TextField descriptionField;
 
     @FXML
+    private TextField amountField;
+
+    @FXML
     private void initialize() {
         updateTotalLabel();
     }
 
     @FXML
     private void handleAddSample() {
-        long amountInCents = 5000;
+        //long amountInCents = 5000;
+        String amountText = amountField.getText();
         String description = descriptionField.getText();
-        Expense expense = new Expense(amountInCents, Category.FOOD, LocalDate.now(), description);
+        Expense expense = new Expense(Money.parse(amountText), Category.FOOD, LocalDate.now(), description);
         service.addExpense(expense);
         updateTotalLabel();
     }

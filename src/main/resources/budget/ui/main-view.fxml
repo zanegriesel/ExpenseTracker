@@ -11,6 +11,7 @@
       spacing="10">
 
     <Label fx:id="totalLabel"/>
+    <TextField fx:id="amountField" promptText="R--.--"/>
     <TextField fx:id="descriptionField" promptText="Expense Description"/>
     <Button text="Add sample expense" onAction="#handleAddSample"/>
 
